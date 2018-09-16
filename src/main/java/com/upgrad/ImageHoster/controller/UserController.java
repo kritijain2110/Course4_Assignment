@@ -74,8 +74,8 @@ public class UserController {
         // We want to create an "currUser" attribute in the HTTP session, and store the user
         // as the attribute's value to signify that the user has logged in
         if(!userService.register(user)) {
-            String error = "username already exists!";
-            model.addAttribute("error", error);
+            String errors = "username not correct,please try again!";
+            model.addAttribute("errors", errors);
         }
 
         session.setAttribute("currUser", user);

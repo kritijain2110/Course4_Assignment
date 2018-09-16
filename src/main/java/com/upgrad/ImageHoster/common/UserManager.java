@@ -19,6 +19,16 @@ public class UserManager extends SessionManager {
      * @return the User object that we saved
      */
     public User registerUser(final User user) {
+
+        if(user.getUsername().length()<6)
+        {
+            return null;
+        }
+
+        else if(user.getPasswordHash().length()<6)
+        {
+            return null;
+        }
         if(getUserByName(user.getUsername()) == null) {
 
             Session session = openSession();
@@ -26,8 +36,9 @@ public class UserManager extends SessionManager {
             commitSession(session);
             return user;
         }
+
         return null;
-    }
+}
 
     /**
      * This method updates an User object into the database
